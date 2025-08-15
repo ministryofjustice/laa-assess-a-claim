@@ -1,0 +1,16 @@
+subprojects {
+    plugins.withId("checkstyle") {
+        configurations.named("checkstyle") {
+            resolutionStrategy {
+                force 'org.apache.commons:commons-lang3:3.18.0'
+            }
+        }
+
+        dependencies {
+            add("checkstyle", "com.puppycrawl.tools:checkstyle:11.0.0") {
+                exclude group: "org.apache.commons", module: "commons-lang3"
+            }
+            add("checkstyle", "org.apache.commons:commons-lang3:3.18.0")
+        }
+    }
+}

@@ -1,0 +1,26 @@
+README.md
+.gradle
+build/
+bin/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+.DS_Store
+*.class
+
+claim-for-payment-api/generated
+claim-for-payment-service/generated/*
+!claim-for-payment-service/generated/**/
+!claim-for-payment-service/generated/**/*.java
+AndroidManifest.xml
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+### VS Code ###
+.vscode/
