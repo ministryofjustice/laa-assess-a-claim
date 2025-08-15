@@ -1,4 +1,4 @@
-# Default values for laa-claim-for-payment.
+# Default values for laa-assess-claims.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
@@ -20,7 +20,7 @@ serviceAccount:
   create: false
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
-  name: "laa-claim-for-payment-sa"
+  name: "laa-assess-claims-sa"
 
 podAnnotations: {}
 podLabels: {}
@@ -50,12 +50,12 @@ service:
 ingress:
   enabled: true
   hosts:
-    - host: laa-claim-for-payment-staging.cloud-platform.service.justice.gov.uk
+    - host: laa-assess-claims-staging.cloud-platform.service.justice.gov.uk
       paths:
         - path: /
           pathType: Prefix
   annotations:
-    external-dns.alpha.kubernetes.io/set-identifier: "laa-claim-for-payment-laa-claim-for-payment-staging-green"
+    external-dns.alpha.kubernetes.io/set-identifier: "laa-assess-claims-laa-assess-claims-staging-green"
     external-dns.alpha.kubernetes.io/aws-weight: "100"
 
 resources:
@@ -82,7 +82,7 @@ env:
   RATE_LIMIT_MAX: ""
   RATE_WINDOW_MS: ""
   NODE_ENV: ""
-  
+
 springProfilesActive: "staging"
 
 postgres:

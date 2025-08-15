@@ -8,10 +8,10 @@ bin/
 .DS_Store
 *.class
 
-claim-for-payment-api/generated
-claim-for-payment-service/generated/*
-!claim-for-payment-service/generated/**/
-!claim-for-payment-service/generated/**/*.java
+assess-claims-api/generated
+assess-claims-service/generated/*
+!assess-claims-service/generated/**/
+!assess-claims-service/generated/**/*.java
 AndroidManifest.xml
 ### IntelliJ IDEA ###
 .idea

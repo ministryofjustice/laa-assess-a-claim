@@ -6,15 +6,15 @@ ENVIRONMENT=$1
 
 deploy_branch() {
 # Set the deployment host, this will add the prefix of the branch name e.g el-257-deploy-with-circleci or just main
-  RELEASE_HOST="$BRANCH_RELEASE_NAME-laa-claim-for-payment-uat.cloud-platform.service.justice.gov.uk"
+  RELEASE_HOST="$BRANCH_RELEASE_NAME-laa-assess-claims-uat.cloud-platform.service.justice.gov.uk"
 # Set the ingress name, needs release name, namespace and -green suffix
-  IDENTIFIER="$BRANCH_RELEASE_NAME-laa-claim-for-payment-$K8S_NAMESPACE-green"
+  IDENTIFIER="$BRANCH_RELEASE_NAME-laa-assess-claims-$K8S_NAMESPACE-green"
   echo "Deploying commit: $GITHUB_SHA under release name: '$BRANCH_RELEASE_NAME'..."
 
-  helm upgrade "$BRANCH_RELEASE_NAME" ./deploy/laa-claim-for-payment/. \
+  helm upgrade "$BRANCH_RELEASE_NAME" ./deploy/laa-assess-claims/. \
                 --install --wait \
                 --namespace="${K8S_NAMESPACE}" \
-                --values ./deploy/laa-claim-for-payment/values/"$ENVIRONMENT".yaml \
+                --values ./deploy/laa-assess-claims/values/"$ENVIRONMENT".yaml \
                 --set image.repository="$REGISTRY/$REPOSITORY" \
                 --set image.tag="$IMAGE_TAG" \
                 --set ingress.annotations."external-dns\.alpha\.kubernetes\.io/set-identifier"="$IDENTIFIER" \
@@ -36,10 +36,10 @@ deploy_branch() {
 }
 
 deploy_main() {  
-  helm upgrade laa-claim-for-payment ./deploy/laa-claim-for-payment/. \
+  helm upgrade laa-assess-claims ./deploy/laa-assess-claims/. \
                           --install --wait \
                           --namespace="${K8S_NAMESPACE}" \
-                          --values ./deploy/laa-claim-for-payment/values/"$ENVIRONMENT".yaml \
+                          --values ./deploy/laa-assess-claims/values/"$ENVIRONMENT".yaml \
                           --set image.repository="$REGISTRY/$REPOSITORY" \
                           --set image.tag="$IMAGE_TAG" \
                           --set env.SERVICE_NAME="$SERVICE_NAME" \
