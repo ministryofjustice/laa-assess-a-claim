@@ -17,8 +17,8 @@ pluginManagement {
     }
 }
 
-rootProject.name = 'laa-claim-for-payment'
+rootProject.name = 'laa-assess-claims'
 
-// include 'claim-for-payment-api'
-include 'claim-for-payment-service'
+// include 'assess-claims-api'
+include 'assess-claims-service'
 

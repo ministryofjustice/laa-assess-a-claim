@@ -2,7 +2,7 @@ name: Build and test PR
 
 on:
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 permissions:
   contents: read
@@ -18,7 +18,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           java-version: 21
-          distribution: 'corretto'
+          distribution: "corretto"
 
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
@@ -44,7 +44,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: checkstyle-report
-          path: claim-for-payment-service/build/reports/checkstyle
+          path: assess-claims-service/build/reports/checkstyle
           retention-days: 14
 
       - name: Upload test report
@@ -52,7 +52,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: test-report
-          path: claim-for-payment-service/build/reports/tests
+          path: assess-claims-service/build/reports/tests
           retention-days: 14
 
       - name: Upload jacoco coverage report
@@ -60,7 +60,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: jacoco-coverage-report
-          path: claim-for-payment-service/build/reports/jacoco
+          path: assess-claims-service/build/reports/jacoco
           retention-days: 14
 
   vulnerability-scan-app:
@@ -97,7 +97,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           java-version: 21
-          distribution: 'corretto'
+          distribution: "corretto"
 
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
@@ -106,19 +106,19 @@ jobs:
         run: ./gradlew build
 
       # - name: Build a Docker image
-      #   run: docker build -t claim-for-payment:scan .
+      #   run: docker build -t assess-claims:scan .
 
       - name: Build local docker image #workaround for snyk issue with docker build
         run: |
           pwd
           ls -al
-          docker build -t claim-for-payment-scan .
-          docker save claim-for-payment-scan -o image.tar
+          docker build -t assess-claims-scan .
+          docker save assess-claims-scan -o image.tar
 
       # - name: Run Snyk to check Docker image for vulnerabilities
       #   uses: snyk/actions/docker@master
       #   with:
-      #     image: claim-for-payment:scan
+      #     image: assess-claims:scan
       #     args: --file=Dockerfile --severity-threshold=high --debug
 
       - name: Run Snyk to on tarball to check docker image for vulnerabilities #workaround for snyk issue with docker build

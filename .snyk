@@ -1,7 +1,7 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
 exclude:
-  - 'claim-for-payment-api/generated/pom.xml'
-  - 'claim-for-payment-service/generated/pom.xml'
+  - 'assess-claims-api/generated/pom.xml'
+  - 'assess-claims-service/generated/pom.xml'
   - '**/generated/pom.xml'
   - '**/.cache/**/*.pom.xml'
 version: v1.25.1

@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "laa-claim-for-payment.fullname" . }}
+  name: {{ include "laa-assess-claims.fullname" . }}
   labels:
-    {{- include "laa-claim-for-payment.labels" . | nindent 4 }}
+    {{- include "laa-assess-claims.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "laa-claim-for-payment.selectorLabels" . | nindent 6 }}
+      {{- include "laa-assess-claims.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -18,7 +18,7 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "laa-claim-for-payment.labels" . | nindent 8 }}
+        {{- include "laa-assess-claims.labels" . | nindent 8 }}
         {{- with .Values.podLabels }}
         {{- toYaml . | nindent 8 }}
         {{- end }}
@@ -27,7 +27,7 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "laa-claim-for-payment.serviceAccountName" . }}
+      serviceAccountName: {{ include "laa-assess-claims.serviceAccountName" . }}
       {{- with .Values.podSecurityContext }}
       securityContext:
         {{- toYaml . | nindent 8 }}

@@ -2,11 +2,11 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: ingress-dashboard
-  namespace: laa-claim-for-payment-uat
+  namespace: laa-assess-claims-uat
   labels:
     grafana_dashboard: ""
 data:
-  laa-claim-for-payment-ingress-dashboard.json: |
+  laa-assess-claims-ingress-dashboard.json: |
     {
       "annotations": {
         "list": [
@@ -30,7 +30,7 @@ data:
           }
         ]
       },
-      "description": "laa-claim-for-payment Ingress",
+      "description": "laa-assess-claims Ingress",
       "editable": true,
       "fiscalYearStartMonth": 0,
       "graphTooltip": 1,
@@ -663,8 +663,8 @@ data:
           {
             "current": {
               "selected": false,
-              "text": "laa-claim-for-payment-uat",
-              "value": "laa-claim-for-payment-uat"
+              "text": "laa-assess-claims-uat",
+              "value": "laa-assess-claims-uat"
             },
             "datasource": {
               "type": "prometheus",
@@ -681,7 +681,7 @@ data:
               "refId": "Prometheus-namespace-Variable-Query"
             },
             "refresh": 1,
-            "regex": "/^laa-claim-for-payment/",
+            "regex": "/^laa-assess-claims/",
             "skipUrlSync": false,
             "sort": 1,
             "tagValuesQuery": "",
@@ -692,8 +692,8 @@ data:
           {
             "current": {
               "selected": false,
-              "text": "laa-claim-for-payment",
-              "value": "laa-claim-for-payment"
+              "text": "laa-assess-claims",
+              "value": "laa-assess-claims"
             },
             "datasource": {
               "type": "prometheus",

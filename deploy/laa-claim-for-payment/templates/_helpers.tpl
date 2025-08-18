@@ -1,7 +1,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "laa-claim-for-payment.name" -}}
+{{- define "laa-assess-claims.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
@@ -10,7 +10,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "laa-claim-for-payment.fullname" -}}
+{{- define "laa-assess-claims.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -26,16 +26,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "laa-claim-for-payment.chart" -}}
+{{- define "laa-assess-claims.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "laa-claim-for-payment.labels" -}}
-helm.sh/chart: {{ include "laa-claim-for-payment.chart" . }}
-{{ include "laa-claim-for-payment.selectorLabels" . }}
+{{- define "laa-assess-claims.labels" -}}
+helm.sh/chart: {{ include "laa-assess-claims.chart" . }}
+{{ include "laa-assess-claims.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -45,17 +45,17 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "laa-claim-for-payment.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "laa-claim-for-payment.name" . }}
+{{- define "laa-assess-claims.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "laa-assess-claims.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "laa-claim-for-payment.serviceAccountName" -}}
+{{- define "laa-assess-claims.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "laa-claim-for-payment.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "laa-assess-claims.fullname" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
